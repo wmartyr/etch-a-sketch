@@ -4,3 +4,29 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+#main-grid {
+  width: 800px;
+  height: 800px;
+}
+
+.row-setup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.column-setup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
