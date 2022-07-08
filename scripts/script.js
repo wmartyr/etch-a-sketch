@@ -13,7 +13,6 @@ for (let i = 0; i < side; i++) {
     div.setAttribute("id", `row${i}-cell${j}`);
     div.style["width"] = `calc(800px / ${side})`;
     div.style["height"] = `calc(800px / ${side})`;
-    // div.textContent = `r: ${i}, c: ${j}`;
     rowDiv.appendChild(div);
   }
 }
