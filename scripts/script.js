@@ -15,7 +15,12 @@ for (let i = 0; i < side; i++) {
     div.style["height"] = `calc(800px / ${side})`;
     // div.textContent = `r: ${i}, c: ${j}`;
     rowDiv.appendChild(div);
-
   }
 }
 
+const cells = document.querySelectorAll(".cell");
+cells.forEach((cell) => {
+  cell.addEventListener("mouseover", () => {
+    cell.classList.add("colorize");
+  });
+});

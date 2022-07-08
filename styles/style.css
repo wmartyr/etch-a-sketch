@@ -30,3 +30,7 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+.colorize {
+  background-color: black;
+}
