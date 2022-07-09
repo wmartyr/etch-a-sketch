@@ -9,6 +9,10 @@ main {
   height: 100vh;
 }
 
+button {
+  margin-bottom: 2rem;
+}
+
 #main-grid {
   width: 800px;
   height: 800px;
