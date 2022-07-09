@@ -1,10 +1,13 @@
-let side = 16;
-createGrid(side);
+let side;
+createGrid(16);
 
 const button = document.querySelector(".sidesButton");
 button.addEventListener("click", () => {
-  side = prompt("Please enter the number of sides in the grid from 2 - 100:");
-  createGrid(side);
+  side = 0;
+  while (!(side >= 2 && side <= 100)) {
+    side = prompt("Please enter the number of sides in the grid from 2 - 100:");
+  }
+    createGrid(side);
 })
 
 function createGrid(side) {
