@@ -41,5 +41,8 @@ function createGrid(side) {
     cell.addEventListener("mouseover", () => {
       cell.classList.add("colorize");
     });
+    cell.addEventListener("mousedown", () => {
+      cell.classList.toggle("colorize");
+    });
   });
 }
