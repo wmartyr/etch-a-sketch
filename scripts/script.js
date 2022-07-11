@@ -19,6 +19,14 @@ function createGrid(side) {
       div.setAttribute("id", `row${i}-cell${j}`);
       div.style["width"] = `calc(800px / ${side})`;
       div.style["height"] = `calc(800px / ${side})`;
+      div.style["border-left"] = "solid 1px black";
+      div.style["border-top"] = "solid 1px black";
+      if (j === side - 1) {
+        div.style["border-right"] = "solid 1px black";
+      }
+      if (i === side - 1) {
+        div.style["border-bottom"] = "solid 1px black";
+      }
       rowDiv.appendChild(div);
     }
   }
