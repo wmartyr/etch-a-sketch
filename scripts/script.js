@@ -73,7 +73,7 @@ function getRandomColor(type) {
 }
 
 function getRandomNumber(max) {
-return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * max);
 }
 
 let side;
@@ -113,4 +113,12 @@ randomButton.addEventListener("click", () => {
 const monoButton = document.querySelector(".mono-button");
 monoButton.addEventListener("click", () => {
   paint("monochrome");
+});
+
+const clearButton = document.querySelector(".clear-button");
+clearButton.addEventListener("click", () => {
+  const cells = document.querySelectorAll(".cell");
+  cells.forEach((cell) => {
+    cell.style["background-color"] = "white";
+  });
 });
