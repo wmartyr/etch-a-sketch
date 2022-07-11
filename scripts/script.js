@@ -47,7 +47,7 @@ function paint(color) {
     });
     cell.addEventListener("mouseover", () => {
       if (cellAction) {
-        if (color === "rainbow" || color === "random") {
+        if (color === "rainbow" || color === "random" || color === "monochrome") {
           cell.style["background-color"] = getRandomColor(color);
         } else {
           cell.style["background-color"] = color;
@@ -66,6 +66,9 @@ function getRandomColor(type) {
     return rainbow[Math.floor(Math.random() * rainbow.length)];
   } else if (type === "random") {
     return `rgb(${getRandomNumber(256)}, ${getRandomNumber(256)}, ${getRandomNumber(256)})`;
+  } else if (type === "monochrome") {
+    let randNum = getRandomNumber(256);
+    return `rgb(${randNum}, ${randNum}, ${randNum})`;
   }
 }
 
@@ -105,4 +108,9 @@ rainbowButton.addEventListener("click", () => {
 const randomButton = document.querySelector(".random-button");
 randomButton.addEventListener("click", () => {
   paint("random");
+});
+
+const monoButton = document.querySelector(".mono-button");
+monoButton.addEventListener("click", () => {
+  paint("monochrome");
 });
