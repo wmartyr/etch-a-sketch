@@ -1,15 +1,3 @@
-let side;
-createGrid(16);
-
-const button = document.querySelector(".sidesButton");
-button.addEventListener("click", () => {
-  side = 0;
-  while (side < 2 || side > 100 || (side % 1 !== 0)) {
-    side = prompt("Please enter the number of sides in the grid from 2 - 100:");
-  }
-  createGrid(side);
-})
-
 function createGrid(side) {
   // clear old grid
   const mainGrid = document.querySelector("#main-grid");
@@ -37,23 +25,42 @@ function createGrid(side) {
 }
 
 //paint on new grid
-let cellPaintOn = false;
-const cells = document.querySelectorAll(".cell");
-cells.forEach((cell) => {
-  cell.addEventListener("mousedown", () => {
-    cellPaintOn = true;
-    cell.classList.add(colorCell(cellPaintOn));
+function paint() {
+  let cellPaintOn = false;
+  const cells = document.querySelectorAll(".cell");
+  cells.forEach((cell) => {
+    cell.addEventListener("mousedown", () => {
+      cellPaintOn = true;
+      cell.classList.add(colorCell(cellPaintOn));
+    });
+    cell.addEventListener("mouseover", () => {
+      cell.classList.add(colorCell(cellPaintOn));
+    });
+    cell.addEventListener("mouseup", () => {
+      cellPaintOn = false;
+    });
   });
-  cell.addEventListener("mouseover", () => {
-    cell.classList.add(colorCell(cellPaintOn));
-  });
-  cell.addEventListener("mouseup", () => {
-    cellPaintOn = false;
-  });
-});
+}
 
 function colorCell(cellPaintOn) {
   if (cellPaintOn) {
     return "colorize";
   }
 }
+
+let side;
+createGrid(16);
+paint();
+
+const button = document.querySelector(".sidesButton");
+button.addEventListener("click", () => {
+  side = 0;
+  while (side < 2 || side > 100 || (side % 1 !== 0)) {
+    side = prompt("Please enter the number of sides in the grid from 2 - 100:");
+  }
+  createGrid(side);
+  paint();
+});
+
+
+
