@@ -25,42 +25,48 @@ function createGrid(side) {
 }
 
 //paint on new grid
-function paint() {
-  let cellPaintOn = false;
+function paint(paintAction) {
+  let cellAction = "none";
   const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     cell.addEventListener("mousedown", () => {
-      cellPaintOn = true;
-      cell.classList.add(colorCell(cellPaintOn));
+      cellAction = paintAction;
+      cell.classList.add(colorCell(cellAction));
     });
     cell.addEventListener("mouseover", () => {
-      cell.classList.add(colorCell(cellPaintOn));
+      cell.classList.add(colorCell(cellAction));
     });
     cell.addEventListener("mouseup", () => {
-      cellPaintOn = false;
+      cellAction = "none";
     });
   });
 }
 
-function colorCell(cellPaintOn) {
-  if (cellPaintOn) {
+function colorCell(cellAction) {
+  if (cellAction === "paint") {
     return "colorize";
+  } else if (cellAction === "erase") {
+    return "erase";
   }
 }
 
 let side;
 createGrid(16);
-paint();
+paint("paint");
 
-const button = document.querySelector(".sidesButton");
-button.addEventListener("click", () => {
+const sidesButton = document.querySelector(".sides-button");
+sidesButton.addEventListener("click", () => {
   side = 0;
   while (side < 2 || side > 100 || (side % 1 !== 0)) {
     side = prompt("Please enter the number of sides in the grid from 2 - 100:");
   }
   createGrid(side);
-  paint();
+  paint("paint");
 });
 
+const eraseButton = document.querySelector(".sides-button");
+eraseButton.addEventListener("click", () => {
+  paint("erase");
+});
 
 

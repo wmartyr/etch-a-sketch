@@ -9,8 +9,10 @@ main {
   height: 100vh;
 }
 
-button {
-  margin-bottom: 2rem;
+.buttons-row {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 1em;
 }
 
 #main-grid {
@@ -34,4 +36,8 @@ button {
 
 .colorize {
   background-color: black;
+}
+
+.erase {
+  background-color: white;
 }
