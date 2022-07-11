@@ -39,7 +39,7 @@ function paint(color) {
   cells.forEach((cell) => {
     cell.addEventListener("mousedown", () => {
       cellAction = true;
-      if (color === "rainbow") {
+      if (color === "rainbow" || color === "random") {
         cell.style["background-color"] = getRandomColor(color);
       } else {
         cell.style["background-color"] = color;
@@ -47,7 +47,7 @@ function paint(color) {
     });
     cell.addEventListener("mouseover", () => {
       if (cellAction) {
-        if (color === "rainbow") {
+        if (color === "rainbow" || color === "random") {
           cell.style["background-color"] = getRandomColor(color);
         } else {
           cell.style["background-color"] = color;
@@ -64,7 +64,13 @@ function getRandomColor(type) {
   let rainbow = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
   if (type === "rainbow") {
     return rainbow[Math.floor(Math.random() * rainbow.length)];
+  } else if (type === "random") {
+    return `rgb(${getRandomNumber(256)}, ${getRandomNumber(256)}, ${getRandomNumber(256)})`;
   }
+}
+
+function getRandomNumber(max) {
+return Math.floor(Math.random() * max);
 }
 
 let side;
@@ -94,4 +100,9 @@ blackButton.addEventListener("click", () => {
 const rainbowButton = document.querySelector(".rainbow-button");
 rainbowButton.addEventListener("click", () => {
   paint("rainbow");
+});
+
+const randomButton = document.querySelector(".random-button");
+randomButton.addEventListener("click", () => {
+  paint("random");
 });
