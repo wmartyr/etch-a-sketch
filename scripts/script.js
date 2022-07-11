@@ -4,7 +4,7 @@ createGrid(16);
 const button = document.querySelector(".sidesButton");
 button.addEventListener("click", () => {
   side = 0;
-  while (!(side >= 2 && side <= 100)) {
+  while (side < 2 || side > 100 || (side % 1 !== 0)) {
     side = prompt("Please enter the number of sides in the grid from 2 - 100:");
   }
     createGrid(side);
