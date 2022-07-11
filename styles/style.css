@@ -33,11 +33,3 @@ main {
   justify-content: center;
   align-items: center;
 }
-
-.black-cell {
-  background-color: black;
-}
-
-.erase {
-  background-color: white;
-}
