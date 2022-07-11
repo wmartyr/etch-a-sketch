@@ -39,17 +39,32 @@ function paint(color) {
   cells.forEach((cell) => {
     cell.addEventListener("mousedown", () => {
       cellAction = true;
-      cell.style["background-color"] = color;
+      if (color === "rainbow") {
+        cell.style["background-color"] = getRandomColor(color);
+      } else {
+        cell.style["background-color"] = color;
+      }
     });
     cell.addEventListener("mouseover", () => {
       if (cellAction) {
-        cell.style["background-color"] = color;
+        if (color === "rainbow") {
+          cell.style["background-color"] = getRandomColor(color);
+        } else {
+          cell.style["background-color"] = color;
+        }
       }
     });
     cell.addEventListener("mouseup", () => {
       cellAction = false;
     });
   });
+}
+
+function getRandomColor(type) {
+  let rainbow = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
+  if (type === "rainbow") {
+    return rainbow[Math.floor(Math.random() * rainbow.length)];
+  }
 }
 
 let side;
@@ -74,4 +89,9 @@ eraseButton.addEventListener("click", () => {
 const blackButton = document.querySelector(".black-button");
 blackButton.addEventListener("click", () => {
   paint("black");
+});
+
+const rainbowButton = document.querySelector(".rainbow-button");
+rainbowButton.addEventListener("click", () => {
+  paint("rainbow");
 });
