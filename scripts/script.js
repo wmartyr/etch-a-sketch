@@ -7,7 +7,7 @@ button.addEventListener("click", () => {
   while (side < 2 || side > 100 || (side % 1 !== 0)) {
     side = prompt("Please enter the number of sides in the grid from 2 - 100:");
   }
-    createGrid(side);
+  createGrid(side);
 })
 
 function createGrid(side) {
@@ -34,23 +34,23 @@ function createGrid(side) {
       rowDiv.appendChild(div);
     }
   }
-
-  //paint on new grid
-  let cellPaintOn = false;
-  const cells = document.querySelectorAll(".cell");
-  cells.forEach((cell) => {
-    cell.addEventListener("mousedown", () => {
-      cellPaintOn = true;
-      cell.classList.add(colorCell(cellPaintOn));
-    });
-    cell.addEventListener("mouseover", () => {
-      cell.classList.add(colorCell(cellPaintOn));
-    });
-    cell.addEventListener("mouseup", () => {
-      cellPaintOn = false;
-    });
-  });
 }
+
+//paint on new grid
+let cellPaintOn = false;
+const cells = document.querySelectorAll(".cell");
+cells.forEach((cell) => {
+  cell.addEventListener("mousedown", () => {
+    cellPaintOn = true;
+    cell.classList.add(colorCell(cellPaintOn));
+  });
+  cell.addEventListener("mouseover", () => {
+    cell.classList.add(colorCell(cellPaintOn));
+  });
+  cell.addEventListener("mouseup", () => {
+    cellPaintOn = false;
+  });
+});
 
 function colorCell(cellPaintOn) {
   if (cellPaintOn) {
