@@ -36,13 +36,24 @@ function createGrid(side) {
   }
 
   //paint on new grid
+  let cellPaintOn = false;
   const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
-    cell.addEventListener("mouseover", () => {
-      cell.classList.add("colorize");
-    });
     cell.addEventListener("mousedown", () => {
-      cell.classList.toggle("colorize");
+      cellPaintOn = true;
+      cell.classList.add(colorCell(cellPaintOn));
+    });
+    cell.addEventListener("mouseover", () => {
+      cell.classList.add(colorCell(cellPaintOn));
+    });
+    cell.addEventListener("mouseup", () => {
+      cellPaintOn = false;
     });
   });
+}
+
+function colorCell(cellPaintOn) {
+  if (cellPaintOn) {
+    return "colorize";
+  }
 }
