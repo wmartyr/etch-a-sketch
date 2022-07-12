@@ -21,6 +21,7 @@ function createGrid(side) {
       div.style["height"] = `calc(800px / ${side})`;
       div.style["border-left"] = "solid 1px black";
       div.style["border-top"] = "solid 1px black";
+      div.style["background-color"] = "#FFFFFF";
       if (j === side - 1) {
         div.style["border-right"] = "solid 1px black";
       }
@@ -33,28 +34,33 @@ function createGrid(side) {
   paint();
 }
 
-
-
 //paint on new grid
 function paint() {
-  let color = "black";
+  let color = "#000000";
   let cellAction = false;
+  let bgColor;
   const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     cell.addEventListener("mousedown", () => {
       cellAction = true;
       if (color === "rainbow" || color === "random" || color === "monochrome") {
-        console.log("Color: 1 " + color);
         cell.style["background-color"] = getRandomColor(color);
+      } else if (color === "shade") {
+        bgColor = cell.style["background-color"];
+        console.log(bgColor);
+        cell.style["background-color"] = darkenColor(bgColor);
       } else {
-        console.log("color 3 " + color);
         cell.style["background-color"] = color;
       }
+
     });
     cell.addEventListener("mouseover", () => {
       if (cellAction) {
         if (color === "rainbow" || color === "random" || color === "monochrome") {
           cell.style["background-color"] = getRandomColor(color);
+        } else if (color === "shade") {
+          bgColor = cell.style["background-color"];
+          cell.style["background-color"] = darkenColor(bgColor);
         } else {
           cell.style["background-color"] = color;
         }
@@ -67,17 +73,12 @@ function paint() {
 
   const eraseButton = document.querySelector(".erase-button");
   eraseButton.addEventListener("click", () => {
-    color = "white";
-  });
-
-  const shadeButton = document.querySelector(".shade-button");
-  shadeButton.addEventListener("click", () => {
-    color = "shade";
+    color = "#FFFFFF";
   });
 
   const blackButton = document.querySelector(".black-button");
   blackButton.addEventListener("click", () => {
-    color = "black";
+    color = "#000000";
   });
 
   const rainbowButton = document.querySelector(".rainbow-button");
@@ -95,10 +96,15 @@ function paint() {
     color = "monochrome";
   });
 
+  const shadeButton = document.querySelector(".shade-button");
+  shadeButton.addEventListener("click", () => {
+    color = "shade";
+  });
+
   const clearButton = document.querySelector(".clear-button");
   clearButton.addEventListener("click", () => {
     cells.forEach((cell) => {
-      cell.style["background-color"] = "white";
+      cell.style["background-color"] = "#FFFFFF";
     });
   });
 }
@@ -119,8 +125,18 @@ function getRandomNumber(max) {
   return Math.floor(Math.random() * max);
 }
 
+//darken color by 10%
 function darkenColor(color) {
-
+  let rgbArr = [];
+  let r, g, b;
+  rgbArr = color.substring(4, color.length - 1).split(",");
+  r = parseInt(rgbArr[0]);
+  g = parseInt(rgbArr[1]);
+  b = parseInt(rgbArr[2]);
+  r = r < 26 ? 0 : r - 26;
+  g = g < 26 ? 0 : g - 26;
+  b = b < 26 ? 0 : b - 26;
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 let side;
