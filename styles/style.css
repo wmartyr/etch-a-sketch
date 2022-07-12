@@ -5,19 +5,50 @@
   box-sizing: border-box;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  height: 10vh;
+  background-color: darkgrey;
+  color: darkslategray;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  min-width: 200px;
+}
+
+h2 {
+  min-width: 500px;
+}
+
 main {
-  height: 100vh;
+  height: 90vh;
+  background-color: lightgray;
 }
 
 .buttons-row {
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
   margin-bottom: 1em;
 }
 
+button {
+  border: none;
+  text-decoration: none;
+  background-color: darkslategray;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 5px;
+}
+
 #main-grid {
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
 }
 
 .row-setup {

@@ -17,8 +17,8 @@ function createGrid(side) {
       const div = document.createElement("div");
       div.classList.add("cell");
       div.setAttribute("id", `row${i}-cell${j}`);
-      div.style["width"] = `calc(800px / ${side})`;
-      div.style["height"] = `calc(800px / ${side})`;
+      div.style["width"] = `calc(600px / ${side})`;
+      div.style["height"] = `calc(600px / ${side})`;
       div.style["border-left"] = "solid 1px black";
       div.style["border-top"] = "solid 1px black";
       div.style["background-color"] = "#FFFFFF";
@@ -47,7 +47,6 @@ function paint() {
         cell.style["background-color"] = getRandomColor(color);
       } else if (color === "shade") {
         bgColor = cell.style["background-color"];
-        console.log(bgColor);
         cell.style["background-color"] = darkenColor(bgColor);
       } else {
         cell.style["background-color"] = color;
